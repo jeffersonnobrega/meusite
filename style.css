@@ -1,0 +1,439 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
+
+body {
+	padding: 0;
+	margin: 0;
+	color: #ffffff;
+	font-family: 'amantic sc', sans-serif;
+}
+
+/* HEADER */
+
+.header-wrapper {
+	height: 100vh;
+	width: 100vw;
+	background: linear-gradient(-45deg, #fdeff9,#ad5389, #89216B,#7303c0,#1D2671, #03001e);
+	background-size: 400% 400%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	animation: backgroundTrasition 8s ease-in-out infinite;
+	position: relative;
+}
+
+h2 {
+	text-transform: uppercase;
+	letter-spacing: 4px;
+}
+
+.social-media {
+	margin-top: 1rem;
+	display: flex;
+}
+
+.social-media a {
+	text-decoration: none;
+	color: #ffffff;
+	font-size: 24px;
+	padding: 1rem /*vertical*/ 4rem /*horizonal*/;
+	border: 1px solid #ffffff;
+	min-width: 4rem; /*valor mínimo*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: .5s cubic-bezier(0.55, 0.025, 0.675, 0.97);
+}
+
+/* o Hover CSS faz parte do conjunto de palavras-chave utilizadas pelas pseudo-classes da linguagem de estilos e
+ serve para adicionar características a um elemento quando a pessoa usuária posiciona o mouse sobre ele. */
+
+a:hover{
+	color: #2e1c2b;
+	background-color: #ffffff;
+}
+
+@keyframes backgroundTrasition {
+	0% {
+		background-position: 0 80%;
+	}
+
+	50% {
+		background-position: 80% 5%;
+	}
+
+	100% {
+		background-position: 0 90%;
+	}
+}
+
+/*MENU HAMBURGUER*/
+
+.checkbox-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkbox {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9999;
+    transition: 400ms ease-in-out 0s;
+}
+
+.checkbox .trace {
+    width: 50px;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+    border-radius: 4px;
+    transition: 0.5s ease-in-out;
+}
+
+.checkbox .trace:nth-child(1) {
+    top: 26px;
+    transform: rotate(0);
+}
+
+.checkbox .trace:nth-child(2) {
+    top: 46px;
+    transform: rotate(0);
+}
+
+.checkbox .trace:nth-child(3) {
+    top: 66px;
+    transform: rotate(0);
+}
+
+#toggle {
+    display: none;
+}
+/*MENU*/
+
+.menu {
+	position: absolute;
+	top: 28px;
+	right: 30px;
+	background: #4ca59b;
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	box-shadow: 0px 0px 0px 0px #ffffff;
+	z-index: -1;
+	transition: 400ms ease-in-out 0;
+}
+
+.menu-items {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 2;
+	opacity: 0;
+	visibility: hidden;
+	transition: 400ms ease-in-out 0;
+}
+
+.menu-items ul {
+	list-style-type: none; /*nós temos as bolinhas então não precisa do list style type*/
+}
+
+.menu-items ul li a {
+	margin: 10px 0;
+	color: #2e1c2b;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	font-size: 40px;
+}
+
+/*ANIMAÇÃO DO MENU*/
+
+/*sobre o checked https://www.techiedelight.com/pt/css-selector-checked-radio-button-javascript/*/
+#toggle:checked + .checkbox .trace:nth-child(1) {
+	transform: rotate(45deg);
+	background-color: #2e1c2b;
+	top: 47px;
+}
+/* visibility:hidden deixa de mostrar o elemento, ou seja, ele deixa de ser visível na página mas seu espaço continua ocupado, ou seja, 
+o layout da página não é alterado por causa disto. É como você apagasse uma luz ali mas a lâmpada continua lá.*/
+#toggle:checked + .checkbox .trace:nth-child(2) {
+	transform: translate(-100px);
+	width: 30px;
+	visibility: hidden;
+	opacity: 0;
+}
+
+#toggle:checked + .checkbox .trace:nth-child(3) {
+	transform: rotate(-45deg);
+	background-color: #2e1c2b;
+	top: 48px;
+}
+
+#toggle:checked + .checkbox {
+	background-color: white;
+	border-radius: 15%;
+}
+
+#toggle:checked ~ .menu {
+	box-shadow: 0px 0px 0px 100vmax white;
+	z-index: 1;
+}
+
+#toggle:checked ~ .menu-items {
+	visibility: visible;
+	opacity: 1;
+}
+
+
+/*CARDS*/
+
+.container {
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	margin: 3 rem 0;
+}
+
+ .container h1 {
+	font-size: 50px;
+	color: #1d2671;
+}
+
+.card-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	width: 90%;
+}
+
+.card {
+    height: 350px;
+    width: 400px;
+    margin: 3rem 0 1.5px 0;
+    background-image: url('./room.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: grayscale(0.5);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+.card-text {
+  	width: 40%;
+  	font-family: sans-serif;
+  	
+}
+
+.list-text {
+	color: #1d2671;
+	text-align: justify;
+}
+
+.list-text h2 {
+	font-size: 40px;
+	color: #1d2671;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-left: 70px;
+}
+
+.card-wrapper {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+.card-wrapper::before {
+  	content: '';
+  	position: absolute;
+  	height: 100px;
+  	width: 100px;
+  	display: block;
+  	border: 1px solid #ffffff;
+  	opacity: 0;
+  	transition: 0.3s;
+}
+
+.card-wrapper h2 {
+  	font-size: 40px;
+  	text-transform: uppercase;
+  	letter-spacing: 4px;
+  	margin: 0;
+  	transition: 0.3s;
+}
+
+.card-wrapper p {
+  	font-size: 0;
+  	visibility: hidden;
+  	opacity: 0;
+  	font-weight: bold;
+  	text-transform: uppercase;
+  	transition: 0.3s;
+}
+   
+.card:hover {
+  	filter: unset;  	
+}
+
+.card:hover > .card-wrapper::before {
+  	width: 350px;
+  	height: 200px;
+  	opacity: 1;  	
+}
+
+.card:hover > .card-wrapper p {
+	font-size: 14px;
+	opacity: 1;
+	visibility: visible;
+} 
+
+/*FOOTER*/
+.footer {
+	height: 100px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #2e1c2b;
+	background: #C33764;  /* fallback for old browsers */
+	background: linear-gradient(-45deg,#1D2671, #C33764); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	
+}
+
+/*RESPONSIVE*/
+/* tratar para o mobile*/
+
+@media (max-width: 800px) {
+	h2 {
+		letter-spacing: 0;
+	}
+    .social-media {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container {
+        margin-top: 0;
+    }
+
+    .container h1 {
+	font-size: 40px;
+	color: #1d2671;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-left: 70px;
+	}
+
+    
+    .card-container {
+        flex-direction: column;
+    }
+
+    .container .card-container:nth-child(1),
+    .container .card-container:nth-child(3) {
+        flex-direction: column-reverse;
+    }
+
+    .card {
+        height: 200px;
+        width: 200px;
+    }
+
+    .card-text {
+        width: 100%;
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    .card-text ul li {
+    	font-size: 10px;
+    	text-align: left;
+
+    	    }
+
+    .card:hover > .card-wrapper::before {
+        height: 190px;
+        width: 190px;
+    }
+}
+
+/*SUBPÁGINA SOBRE */
+
+.foto-text {
+	height: 350px;
+    width: 400px;
+    margin: 0;
+    border-radius: 400px 400px 400px 400px;
+    background-image: url('./eu_purple.jpeg');
+    background-position: center;   
+    background-size: cover;
+    display: inline-block;
+    float: left;    
+}
+
+.card-text {
+	display: inline-block;
+    float: left;  
+    font-size: 20px;
+    font-family: sans-serif;
+    
+    border: 1.5px solid #ffffff;
+}
+
+@media (max-width:  400px) {
+	.foto-text {
+	height: 150x;
+    width: 380px;
+    margin: 0;
+    /*border-radius: 90px 90px 90px 90px;*/
+    /*background-image: url('./eu_purple.jpeg');*/
+    background-position: center;   
+    background-size: cover;
+    display: flex;
+
+	}	
+	.card-text h1{		
+		font-size: 25px;	
+		align-items: center;	
+		justify-content: center;
+	}
+
+	.card-text {
+		font-size: 13px;
+		border: 1.0px solid #ffffff;
+		margin-top: 10px;
+	}
+}
+
+/*SUBPÁGINA CURRICULO*/
+
+h1 {
+	font-size: 50px;
+	color: #fffffff;
+}
